@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import React, { FC, ReactNode, useContext } from "react";
 import styled from "styled-components";
 import { Button, LinkButton } from "../../../components/common";
 import { IStyledProps } from "../../..";
