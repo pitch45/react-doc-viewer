@@ -8,7 +8,10 @@
 
 # production
 /build
-/dist
+
+# committing /dist folder for now to use github as package repo
+# /dist 
+
 /storybook-static
 
 # misc

@@ -10,6 +10,8 @@ import CSVRenderer from "./csv";
 import GIFRenderer from "./gif";
 import VideoRenderer from "./video";
 
+export * from "./pdf";
+
 export const DocViewerRenderers = [
   BMPRenderer,
   HTMLRenderer,

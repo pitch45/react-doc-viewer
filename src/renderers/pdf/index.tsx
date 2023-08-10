@@ -1,11 +1,12 @@
-// @ts-ignore
-import React from "react";
+import React, { ReactElement, ReactNode, useCallback, useContext } from "react";
 import { pdfjs } from "react-pdf";
 import styled from "styled-components";
-import { DocRenderer, IStyledProps } from "../..";
+import { DocRenderer, IDocument, IStyledProps } from "../..";
 import PDFPages from "./components/pages/PDFPages";
 import PDFControls from "./components/PDFControls";
-import { PDFProvider } from "./state";
+import { PDFContext, PDFProvider } from "./state";
+import { setPDFPaginated, setZoomLevel, setCurrentPage } from "./state/actions";
+import { IMainState } from "../../store/mainStateReducer";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/legacy/build/pdf.worker.min.js`;
 
@@ -18,6 +19,99 @@ const PDFRenderer: DocRenderer = ({ mainState }) => {
       </Container>
     </PDFProvider>
   );
+};
+
+export const createPDFRenderer = (
+  customControls: React.FC<CustomControllerProps>
+) => {
+  const customPdfRenderer: DocRenderer = ({
+    mainState,
+  }: {
+    mainState: IMainState;
+  }) => {
+    return (
+      <PDFProvider mainState={mainState}>
+        <Container id="pdf-renderer" data-testid="pdf-renderer">
+          <CustomControlContainer customControl={customControls} />
+          <PDFPages />
+        </Container>
+      </PDFProvider>
+    );
+  };
+  customPdfRenderer.fileTypes = ["pdf", "application/pdf"];
+  customPdfRenderer.weight = 1;
+  return customPdfRenderer;
+};
+
+export interface CustomControllerProps {
+  currentDocument?: IDocument;
+  currentPage: number;
+  numPages: number;
+  zoomOut: () => void;
+  zoomIn: () => void;
+  resetZoom: () => void;
+  togglePaginated: () => void;
+  pageNext: () => void;
+  pagePrev: () => void;
+}
+
+const CustomControlContainer = ({
+  customControl,
+}: {
+  customControl: React.FC<CustomControllerProps>;
+}) => {
+  const {
+    state: {
+      mainState,
+      paginated,
+      zoomLevel,
+      currentPage,
+      numPages,
+      zoomJump,
+      defaultZoomLevel,
+    },
+    dispatch,
+  } = useContext(PDFContext);
+
+  const zoomOut = useCallback(() => {
+    dispatch(setZoomLevel(zoomLevel - zoomJump));
+  }, [zoomLevel, zoomJump]);
+
+  const zoomIn = useCallback(() => {
+    dispatch(setZoomLevel(zoomLevel + zoomJump));
+  }, [zoomLevel, zoomJump]);
+
+  const resetZoom = useCallback(() => {
+    dispatch(setZoomLevel(defaultZoomLevel));
+  }, [defaultZoomLevel]);
+
+  const togglePaginated = useCallback(() => {
+    dispatch(setPDFPaginated(!paginated));
+  }, [paginated]);
+
+  const pageNext = useCallback(() => {
+    if (currentPage <= numPages) {
+      dispatch(setCurrentPage(currentPage + 1));
+    }
+  }, [currentPage, numPages]);
+
+  const pagePrev = useCallback(() => {
+    if (currentPage > 1) {
+      dispatch(setCurrentPage(currentPage - 1));
+    }
+  }, [currentPage, numPages]);
+
+  return customControl({
+    currentDocument: mainState?.currentDocument,
+    currentPage,
+    numPages,
+    zoomOut,
+    zoomIn,
+    resetZoom,
+    togglePaginated,
+    pageNext,
+    pagePrev,
+  });
 };
 
 export default PDFRenderer;
