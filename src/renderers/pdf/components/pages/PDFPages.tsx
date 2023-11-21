@@ -9,6 +9,8 @@ import { initialPDFState } from "../../state/reducer";
 import { PDFAllPages } from "./PDFAllPages";
 import PDFSinglePage from "./PDFSinglePage";
 
+import "react-pdf/dist/Page/AnnotationLayer.css";
+
 const PDFPages: FC<{}> = () => {
   const {
     state: { mainState, paginated },

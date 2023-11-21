@@ -40,6 +40,7 @@ var actions_1 = require("../../state/actions");
 var reducer_1 = require("../../state/reducer");
 var PDFAllPages_1 = require("./PDFAllPages");
 var PDFSinglePage_1 = __importDefault(require("./PDFSinglePage"));
+require("react-pdf/dist/Page/AnnotationLayer.css");
 var PDFPages = function () {
     var _a = (0, react_1.useContext)(state_1.PDFContext), _b = _a.state, mainState = _b.mainState, paginated = _b.paginated, dispatch = _a.dispatch;
     var t = (0, useTranslation_1.useTranslation)().t;

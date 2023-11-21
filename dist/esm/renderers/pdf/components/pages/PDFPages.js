@@ -12,6 +12,7 @@ import { setNumPages } from "../../state/actions";
 import { initialPDFState } from "../../state/reducer";
 import { PDFAllPages } from "./PDFAllPages";
 import PDFSinglePage from "./PDFSinglePage";
+import "react-pdf/dist/Page/AnnotationLayer.css";
 var PDFPages = function () {
     var _a = useContext(PDFContext), _b = _a.state, mainState = _b.mainState, paginated = _b.paginated, dispatch = _a.dispatch;
     var t = useTranslation().t;
