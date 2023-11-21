@@ -8,6 +8,7 @@ import { PDFContext, PDFProvider } from "./state";
 import { setPDFPaginated, setZoomLevel, setCurrentPage } from "./state/actions";
 import { IMainState } from "../../store/mainStateReducer";
 
+import "react-pdf/dist/Page/AnnotationLayer.css";
 pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/legacy/build/pdf.worker.min.js`;
 
 const PDFRenderer: DocRenderer = ({ mainState }) => {
