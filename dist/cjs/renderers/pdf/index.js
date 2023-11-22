@@ -38,6 +38,7 @@ var PDFPages_1 = __importDefault(require("./components/pages/PDFPages"));
 var PDFControls_1 = __importDefault(require("./components/PDFControls"));
 var state_1 = require("./state");
 var actions_1 = require("./state/actions");
+require("react-pdf/dist/Page/AnnotationLayer.css");
 react_pdf_1.pdfjs.GlobalWorkerOptions.workerSrc = "https://unpkg.com/pdfjs-dist@".concat(react_pdf_1.pdfjs.version, "/legacy/build/pdf.worker.min.js");
 var PDFRenderer = function (_a) {
     var mainState = _a.mainState;

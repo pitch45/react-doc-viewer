@@ -35,9 +35,6 @@ const PDFSinglePage: FC<Props> = ({ pageNum }) => {
         height={(rendererRect?.height || 100) - 100}
         width={(rendererRect?.width || 100) - 100}
         loading={t("pdfPluginLoading")}
-        onRenderAnnotationLayerSuccess={console.log}
-        onRenderAnnotationLayerError={console.error}
-        onGetAnnotationsError={console.error}
       />
     </PageWrapper>
   );
