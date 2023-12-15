@@ -38,7 +38,9 @@ var PDFPages_1 = __importDefault(require("./components/pages/PDFPages"));
 var PDFControls_1 = __importDefault(require("./components/PDFControls"));
 var state_1 = require("./state");
 var actions_1 = require("./state/actions");
-react_pdf_1.pdfjs.GlobalWorkerOptions.workerSrc = "https://unpkg.com/pdfjs-dist@".concat(react_pdf_1.pdfjs.version, "/legacy/build/pdf.worker.min.js");
+require("react-pdf/dist/esm/Page/AnnotationLayer.css");
+require("react-pdf/dist/esm/Page/TextLayer.css");
+react_pdf_1.pdfjs.GlobalWorkerOptions.workerSrc = "//unpkg.com/pdfjs-dist@".concat(react_pdf_1.pdfjs.version, "/build/pdf.worker.min.js");
 var PDFRenderer = function (_a) {
     var mainState = _a.mainState;
     return (react_1.default.createElement(state_1.PDFProvider, { mainState: mainState },

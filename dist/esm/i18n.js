@@ -9,6 +9,8 @@ import ar from "./locales/ar.json";
 import sr from "./locales/sr.json";
 import sr_cyr from "./locales/sr_cyr.json";
 import ja from "./locales/ja.json";
+import ru from "./locales/ru.json";
+import se from "./locales/se.json";
 export var locales = {
     en: en,
     pl: pl,
@@ -21,5 +23,7 @@ export var locales = {
     sr: sr,
     sr_cyr: sr_cyr,
     ja: ja,
+    ru: ru,
+    se: se
 };
 export var defaultLanguage = "en";

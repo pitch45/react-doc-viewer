@@ -23,3 +23,4 @@ export var DocViewerRenderers = [
     GIFRenderer,
     VideoRenderer,
 ];
+export { BMPRenderer, HTMLRenderer, JPGRenderer, MSDocRenderer, PDFRenderer, PNGRenderer, TIFFRenderer, TXTRenderer, CSVRenderer, GIFRenderer, VideoRenderer, };

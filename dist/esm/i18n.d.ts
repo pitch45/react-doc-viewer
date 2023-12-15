@@ -109,6 +109,26 @@ export declare const locales: {
         pdfPluginLoading: string;
         pdfPluginPageNumber: string;
     };
+    ru: {
+        documentNavInfo: string;
+        noRendererMessage: string;
+        downloadButtonLabel: string;
+        brokenFile: string;
+        msgPluginRecipients: string;
+        msgPluginSender: string;
+        pdfPluginLoading: string;
+        pdfPluginPageNumber: string;
+    };
+    se: {
+        documentNavInfo: string;
+        noRendererMessage: string;
+        downloadButtonLabel: string;
+        brokenFile: string;
+        msgPluginRecipients: string;
+        msgPluginSender: string;
+        pdfPluginLoading: string;
+        pdfPluginPageNumber: string;
+    };
 };
 export type AvailableLanguages = keyof typeof locales;
 export declare const defaultLanguage: AvailableLanguages;

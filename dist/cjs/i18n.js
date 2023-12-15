@@ -15,6 +15,8 @@ var ar_json_1 = __importDefault(require("./locales/ar.json"));
 var sr_json_1 = __importDefault(require("./locales/sr.json"));
 var sr_cyr_json_1 = __importDefault(require("./locales/sr_cyr.json"));
 var ja_json_1 = __importDefault(require("./locales/ja.json"));
+var ru_json_1 = __importDefault(require("./locales/ru.json"));
+var se_json_1 = __importDefault(require("./locales/se.json"));
 exports.locales = {
     en: en_json_1.default,
     pl: pl_json_1.default,
@@ -27,5 +29,7 @@ exports.locales = {
     sr: sr_json_1.default,
     sr_cyr: sr_cyr_json_1.default,
     ja: ja_json_1.default,
+    ru: ru_json_1.default,
+    se: se_json_1.default
 };
 exports.defaultLanguage = "en";
