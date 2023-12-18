@@ -52,7 +52,7 @@ var DocViewer = (0, react_1.forwardRef)(function (props, ref) {
     }
     return (react_1.default.createElement(DocViewerProvider_1.DocViewerProvider, __assign({ ref: ref, pluginRenderers: renderers_1.DocViewerRenderers }, props),
         react_1.default.createElement(styled_components_1.ThemeProvider, { theme: theme ? __assign(__assign({}, defaultTheme_1.defaultTheme), theme) : defaultTheme_1.defaultTheme },
-            react_1.default.createElement(Container, __assign({ id: "react-doc-viewer", "data-testid": "react-doc-viewer" }, props),
+            react_1.default.createElement(Container, { id: "react-doc-viewer", "data-testid": "react-doc-viewer", className: props.className, style: props.style },
                 react_1.default.createElement(HeaderBar_1.HeaderBar, null),
                 react_1.default.createElement(ProxyRenderer_1.ProxyRenderer, null)))));
 });

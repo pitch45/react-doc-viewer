@@ -27,7 +27,7 @@ var DocViewer = forwardRef(function (props, ref) {
     }
     return (React.createElement(DocViewerProvider, __assign({ ref: ref, pluginRenderers: DocViewerRenderers }, props),
         React.createElement(ThemeProvider, { theme: theme ? __assign(__assign({}, defaultTheme), theme) : defaultTheme },
-            React.createElement(Container, __assign({ id: "react-doc-viewer", "data-testid": "react-doc-viewer" }, props),
+            React.createElement(Container, { id: "react-doc-viewer", "data-testid": "react-doc-viewer", className: props.className, style: props.style },
                 React.createElement(HeaderBar, null),
                 React.createElement(ProxyRenderer, null)))));
 });

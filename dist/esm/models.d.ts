@@ -1,5 +1,4 @@
 import { FC, ReactElement, ComponentType, PropsWithChildren } from "react";
-import { ThemedStyledProps } from "styled-components";
 import { IMainState } from "./store/mainStateReducer";
 import { FileLoaderFunction } from "./utils/fileLoaders";
 export interface IConfig {
@@ -43,7 +42,7 @@ export interface ITheme {
     textTertiary?: string;
     disableThemeScrollbar?: boolean;
 }
-export interface IStyledProps extends ThemedStyledProps<any, any> {
+export interface IStyledProps {
     theme: ITheme;
 }
 export interface IDocument {

@@ -1,5 +1,7 @@
 import React from "react";
 import { DocRenderer, IDocument } from "../..";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import "react-pdf/dist/esm/Page/TextLayer.css";
 declare const PDFRenderer: DocRenderer;
 export declare const createPDFRenderer: (customControls: React.FC<CustomControllerProps>) => DocRenderer;
 export interface CustomControllerProps {

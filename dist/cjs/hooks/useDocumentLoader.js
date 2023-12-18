@@ -36,13 +36,15 @@ var useDocumentLoader = function () {
             method: prefetchMethod || documentURI.startsWith("blob:") ? "GET" : "HEAD",
             signal: signal,
             headers: state === null || state === void 0 ? void 0 : state.requestHeaders,
-        }).then(function (response) {
+        })
+            .then(function (response) {
             var contentTypeRaw = response.headers.get("content-type");
             var contentTypes = (contentTypeRaw === null || contentTypeRaw === void 0 ? void 0 : contentTypeRaw.split(";")) || [];
             var contentType = contentTypes.length ? contentTypes[0] : undefined;
             dispatch((0, actions_1.updateCurrentDocument)(__assign(__assign({}, currentDocument), { fileType: contentType || undefined })));
-        }).catch(function (error) {
-            if ((error === null || error === void 0 ? void 0 : error.name) !== 'AbortError') {
+        })
+            .catch(function (error) {
+            if ((error === null || error === void 0 ? void 0 : error.name) !== "AbortError") {
                 throw error;
             }
         });
