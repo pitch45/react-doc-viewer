@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode, useCallback, useContext } from "react";
+import React, { useCallback, useContext } from "react";
 import { pdfjs } from "react-pdf";
 import styled from "styled-components";
 import { DocRenderer, IDocument, IStyledProps } from "../..";
@@ -7,8 +7,10 @@ import PDFControls from "./components/PDFControls";
 import { PDFContext, PDFProvider } from "./state";
 import { setPDFPaginated, setZoomLevel, setCurrentPage } from "./state/actions";
 import { IMainState } from "../../store/mainStateReducer";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import "react-pdf/dist/esm/Page/TextLayer.css";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/legacy/build/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 const PDFRenderer: DocRenderer = ({ mainState }) => {
   return (

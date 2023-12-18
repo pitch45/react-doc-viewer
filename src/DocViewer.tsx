@@ -48,7 +48,8 @@ const DocViewer = forwardRef<DocViewerRef, DocViewerProps>((props, ref) => {
         <Container
           id="react-doc-viewer"
           data-testid="react-doc-viewer"
-          {...props}
+          className={props.className}
+          style={props.style}
         >
           <HeaderBar />
           <ProxyRenderer />
