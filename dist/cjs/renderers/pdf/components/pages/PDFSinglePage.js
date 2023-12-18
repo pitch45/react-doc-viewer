@@ -41,7 +41,7 @@ var PDFSinglePage = function (_a) {
     var t = (0, useTranslation_1.useTranslation)().t;
     var rendererRect = (mainState === null || mainState === void 0 ? void 0 : mainState.rendererRect) || null;
     var _pageNum = pageNum || currentPage;
-    return (react_1.default.createElement(PageWrapper, { id: "pdf-page-wrapper", last: _pageNum >= numPages },
+    return (react_1.default.createElement(PageWrapper, { id: "pdf-page-wrapper" },
         !paginated && (react_1.default.createElement(PageTag, { id: "pdf-page-info" }, t("pdfPluginPageNumber", {
             currentPage: _pageNum,
             allPagesCount: numPages,
