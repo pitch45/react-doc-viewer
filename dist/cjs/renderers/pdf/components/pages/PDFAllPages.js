@@ -30,11 +30,12 @@ exports.PDFAllPages = void 0;
 var react_1 = __importStar(require("react"));
 var state_1 = require("../../state");
 var PDFSinglePage_1 = __importDefault(require("./PDFSinglePage"));
-var PDFAllPages = function () {
+var PDFAllPages = function (_a) {
+    var documentOverlay = _a.documentOverlay;
     var numPages = (0, react_1.useContext)(state_1.PDFContext).state.numPages;
     var PagesArray = [];
     for (var i = 0; i < numPages; i++) {
-        PagesArray.push(react_1.default.createElement(PDFSinglePage_1.default, { key: i + 1, pageNum: i + 1 }));
+        PagesArray.push(react_1.default.createElement(PDFSinglePage_1.default, { documentOverlay: documentOverlay, key: i + 1, pageNum: i + 1 }));
     }
     return react_1.default.createElement(react_1.default.Fragment, null, PagesArray);
 };

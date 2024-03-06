@@ -19,13 +19,13 @@ var PDFRenderer = function (_a) {
             React.createElement(PDFControls, null),
             React.createElement(PDFPages, null))));
 };
-export var createPDFRenderer = function (customControls) {
+export var createPDFRenderer = function (customControls, documentOverlay) {
     var customPdfRenderer = function (_a) {
         var mainState = _a.mainState;
         return (React.createElement(PDFProvider, { mainState: mainState },
             React.createElement(Container, { id: "pdf-renderer", "data-testid": "pdf-renderer" },
                 React.createElement(CustomControlContainer, { customControl: customControls }),
-                React.createElement(PDFPages, null))));
+                React.createElement(PDFPages, { documentOverlay: documentOverlay }))));
     };
     customPdfRenderer.fileTypes = ["pdf", "application/pdf"];
     customPdfRenderer.weight = 1;

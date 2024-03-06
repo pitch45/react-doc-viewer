@@ -36,12 +36,18 @@ var styled_components_1 = __importDefault(require("styled-components"));
 var useTranslation_1 = require("../../../../hooks/useTranslation");
 var state_1 = require("../../state");
 var PDFSinglePage = function (_a) {
-    var pageNum = _a.pageNum;
+    var pageNum = _a.pageNum, documentOverlay = _a.documentOverlay;
     var _b = (0, react_1.useContext)(state_1.PDFContext).state, mainState = _b.mainState, paginated = _b.paginated, zoomLevel = _b.zoomLevel, numPages = _b.numPages, currentPage = _b.currentPage;
     var t = (0, useTranslation_1.useTranslation)().t;
     var rendererRect = (mainState === null || mainState === void 0 ? void 0 : mainState.rendererRect) || null;
     var _pageNum = pageNum || currentPage;
     return (react_1.default.createElement(PageWrapper, { id: "pdf-page-wrapper" },
+        documentOverlay && (react_1.default.createElement("div", { style: {
+                zIndex: 99,
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+            } }, documentOverlay)),
         !paginated && (react_1.default.createElement(PageTag, { id: "pdf-page-info" }, t("pdfPluginPageNumber", {
             currentPage: _pageNum,
             allPagesCount: numPages,
@@ -49,6 +55,6 @@ var PDFSinglePage = function (_a) {
         react_1.default.createElement(react_pdf_1.Page, { pageNumber: _pageNum || currentPage, scale: zoomLevel, height: ((rendererRect === null || rendererRect === void 0 ? void 0 : rendererRect.height) || 100) - 100, width: ((rendererRect === null || rendererRect === void 0 ? void 0 : rendererRect.width) || 100) - 100, loading: t("pdfPluginLoading") })));
 };
 exports.default = PDFSinglePage;
-var PageWrapper = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  margin: 20px 0;\n"], ["\n  margin: 20px 0;\n"])));
+var PageWrapper = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  margin: 20px 0;\n  position: relative;\n"], ["\n  margin: 20px 0;\n  position: relative;\n"])));
 var PageTag = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  padding: 0 0 10px 10px;\n  color: ", ";\n  font-size: 14px;\n  text-align: left;\n\n  @media (max-width: 768px) {\n    font-size: 10px;\n  }\n"], ["\n  padding: 0 0 10px 10px;\n  color: ", ";\n  font-size: 14px;\n  text-align: left;\n\n  @media (max-width: 768px) {\n    font-size: 10px;\n  }\n"])), function (props) { return props.theme.textTertiary; });
 var templateObject_1, templateObject_2;

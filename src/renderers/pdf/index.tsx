@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import React, { ReactElement, useCallback, useContext } from "react";
 import { pdfjs } from "react-pdf";
 import styled from "styled-components";
 import { DocRenderer, IDocument, IStyledProps } from "../..";
@@ -24,7 +24,8 @@ const PDFRenderer: DocRenderer = ({ mainState }) => {
 };
 
 export const createPDFRenderer = (
-  customControls: React.FC<CustomControllerProps>
+  customControls: React.FC<CustomControllerProps>,
+  documentOverlay?: ReactElement,
 ) => {
   const customPdfRenderer: DocRenderer = ({
     mainState,
@@ -35,7 +36,7 @@ export const createPDFRenderer = (
       <PDFProvider mainState={mainState}>
         <Container id="pdf-renderer" data-testid="pdf-renderer">
           <CustomControlContainer customControl={customControls} />
-          <PDFPages />
+          <PDFPages documentOverlay={documentOverlay} />
         </Container>
       </PDFProvider>
     );

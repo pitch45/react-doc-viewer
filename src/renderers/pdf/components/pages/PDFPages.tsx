@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { FC, useContext, useEffect } from "react";
+import React, { FC, ReactElement, useContext, useEffect } from "react";
 import { Document } from "react-pdf";
 import styled from "styled-components";
 import { useTranslation } from "../../../../hooks/useTranslation";
@@ -9,7 +9,7 @@ import { initialPDFState } from "../../state/reducer";
 import { PDFAllPages } from "./PDFAllPages";
 import PDFSinglePage from "./PDFSinglePage";
 
-const PDFPages: FC<{}> = () => {
+const PDFPages: FC<{ documentOverlay?: ReactElement }> = (props) => {
   const {
     state: { mainState, paginated },
     dispatch,
@@ -25,13 +25,19 @@ const PDFPages: FC<{}> = () => {
   if (!currentDocument || currentDocument.fileData === undefined) return null;
 
   return (
-    <DocumentPDF
-      file={currentDocument.fileData}
-      onLoadSuccess={({ numPages }) => dispatch(setNumPages(numPages))}
-      loading={<span>{t("pdfPluginLoading")}</span>}
-    >
-      {paginated ? <PDFSinglePage /> : <PDFAllPages />}
-    </DocumentPDF>
+    <>
+      <DocumentPDF
+        file={currentDocument.fileData}
+        onLoadSuccess={({ numPages }) => dispatch(setNumPages(numPages))}
+        loading={<span>{t("pdfPluginLoading")}</span>}
+      >
+        {paginated ? (
+          <PDFSinglePage documentOverlay={props.documentOverlay} />
+        ) : (
+          <PDFAllPages documentOverlay={props.documentOverlay} />
+        )}
+      </DocumentPDF>
+    </>
   );
 };
 
