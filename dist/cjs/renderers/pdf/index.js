@@ -48,13 +48,13 @@ var PDFRenderer = function (_a) {
             react_1.default.createElement(PDFControls_1.default, null),
             react_1.default.createElement(PDFPages_1.default, null))));
 };
-var createPDFRenderer = function (customControls) {
+var createPDFRenderer = function (customControls, documentOverlay) {
     var customPdfRenderer = function (_a) {
         var mainState = _a.mainState;
         return (react_1.default.createElement(state_1.PDFProvider, { mainState: mainState },
             react_1.default.createElement(Container, { id: "pdf-renderer", "data-testid": "pdf-renderer" },
                 react_1.default.createElement(CustomControlContainer, { customControl: customControls }),
-                react_1.default.createElement(PDFPages_1.default, null))));
+                react_1.default.createElement(PDFPages_1.default, { documentOverlay: documentOverlay }))));
     };
     customPdfRenderer.fileTypes = ["pdf", "application/pdf"];
     customPdfRenderer.weight = 1;

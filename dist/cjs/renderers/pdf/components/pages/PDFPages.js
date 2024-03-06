@@ -40,7 +40,7 @@ var actions_1 = require("../../state/actions");
 var reducer_1 = require("../../state/reducer");
 var PDFAllPages_1 = require("./PDFAllPages");
 var PDFSinglePage_1 = __importDefault(require("./PDFSinglePage"));
-var PDFPages = function () {
+var PDFPages = function (props) {
     var _a = (0, react_1.useContext)(state_1.PDFContext), _b = _a.state, mainState = _b.mainState, paginated = _b.paginated, dispatch = _a.dispatch;
     var t = (0, useTranslation_1.useTranslation)().t;
     var currentDocument = (mainState === null || mainState === void 0 ? void 0 : mainState.currentDocument) || null;
@@ -49,10 +49,11 @@ var PDFPages = function () {
     }, [currentDocument]);
     if (!currentDocument || currentDocument.fileData === undefined)
         return null;
-    return (react_1.default.createElement(DocumentPDF, { file: currentDocument.fileData, onLoadSuccess: function (_a) {
-            var numPages = _a.numPages;
-            return dispatch((0, actions_1.setNumPages)(numPages));
-        }, loading: react_1.default.createElement("span", null, t("pdfPluginLoading")) }, paginated ? react_1.default.createElement(PDFSinglePage_1.default, null) : react_1.default.createElement(PDFAllPages_1.PDFAllPages, null)));
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_1.default.createElement(DocumentPDF, { file: currentDocument.fileData, onLoadSuccess: function (_a) {
+                var numPages = _a.numPages;
+                return dispatch((0, actions_1.setNumPages)(numPages));
+            }, loading: react_1.default.createElement("span", null, t("pdfPluginLoading")) }, paginated ? (react_1.default.createElement(PDFSinglePage_1.default, { documentOverlay: props.documentOverlay })) : (react_1.default.createElement(PDFAllPages_1.PDFAllPages, { documentOverlay: props.documentOverlay })))));
 };
 var DocumentPDF = (0, styled_components_1.default)(react_pdf_1.Document)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  margin: 0 auto;\n"], ["\n  display: flex;\n  flex-direction: column;\n  margin: 0 auto;\n"])));
 exports.default = PDFPages;

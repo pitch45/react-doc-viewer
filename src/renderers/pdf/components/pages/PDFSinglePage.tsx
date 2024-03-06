@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import React, { FC, ReactElement, useContext } from "react";
 import { Page } from "react-pdf";
 import styled from "styled-components";
 import { IStyledProps } from "../../../..";
@@ -7,9 +7,10 @@ import { PDFContext } from "../../state";
 
 interface Props {
   pageNum?: number;
+  documentOverlay?: ReactElement;
 }
 
-const PDFSinglePage: FC<Props> = ({ pageNum }) => {
+const PDFSinglePage: FC<Props> = ({ pageNum, documentOverlay }) => {
   const {
     state: { mainState, paginated, zoomLevel, numPages, currentPage },
   } = useContext(PDFContext);
@@ -21,6 +22,18 @@ const PDFSinglePage: FC<Props> = ({ pageNum }) => {
 
   return (
     <PageWrapper id="pdf-page-wrapper">
+      {documentOverlay && (
+        <div
+          style={{
+            zIndex: 99,
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          {documentOverlay}
+        </div>
+      )}
       {!paginated && (
         <PageTag id="pdf-page-info">
           {t("pdfPluginPageNumber", {
@@ -46,6 +59,7 @@ interface PageWrapperProps {}
 
 const PageWrapper = styled.div<PageWrapperProps>`
   margin: 20px 0;
+  position: relative;
 `;
 
 const PageTag = styled.div`
