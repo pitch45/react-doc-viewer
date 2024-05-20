@@ -37,7 +37,7 @@
     "@types/papaparse": "^5.3.9",
     "mustache": "^4.2.0",
     "papaparse": "^5.4.1",
-    "react-pdf": "7.5.0",
+    "react-pdf": "8.0.2",
     "styled-components": "^6.0.8"
   },
   "devDependencies": {
